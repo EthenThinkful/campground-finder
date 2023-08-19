@@ -8,7 +8,7 @@ To run the development server, follow these steps:
 
 1. Clone this repository to your local machine.
 2. Install project dependencies by running:npm install
-3.Start the development server: npm run dev
+3. Start the development server: npm run dev
 
 ## Features 
 Find and browse available campgrounds.
