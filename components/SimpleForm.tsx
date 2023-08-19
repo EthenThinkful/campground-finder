@@ -6,7 +6,12 @@ type SimpleFormProps = {
   onSubmit: (inputValue: string) => void;
 };
 
-let names: string[] = campgroundInfo.map((c) => c.FacilityName);
+interface Campground {
+  FacilityName: string;
+  // Add other properties if applicable
+}
+
+let names: string[] = (campgroundInfo as Campground[]).map((c) => c.FacilityName);
 // console.log(names);
 
 const SimpleForm: React.FC<SimpleFormProps> = ({ onSubmit }) => {
