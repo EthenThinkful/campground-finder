@@ -1,3 +1,22 @@
+# Campground Finder
+
+Campground Finder is a web application built with [Next.js](https://nextjs.org/) and styled using [Tailwind CSS](https://tailwindcss.com/). The application is designed to help users find and reserve campgrounds.
+
+## Getting Started
+
+To run the development server, follow these steps:
+
+1. Clone this repository to your local machine.
+2. Install project dependencies by running:npm install
+3. Start the development server: npm run dev
+
+## Features 
+Find and browse available campgrounds.
+Reserve campsites based on availability.
+
+# Contributing
+Contributions to this project are welcome! If you have suggestions, bug reports, or feature requests, feel free to open an issue or submit a pull request to the GitHub repository.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
