@@ -7,8 +7,7 @@ const Home: React.FC = () => {
     // Process the form data here, e.g., send it to an API
     console.log("Submitted:", inputValue);
   };
-  // return <SimpleForm onSubmit={handleSubmit} />;
-  return <Testing />;
-
+  return <SimpleForm onSubmit={handleSubmit} />;
+  // return <Testing />;
 };
 export default Home;

@@ -14,8 +14,6 @@ interface Campground {
 
 // Retrieve campground names from campgroundInfo.json
 let names: string[] = (campgroundInfo as Campground[]).map((c) => c.FacilityName);
-(campgroundInfo as Campground[]).map((c) => c.FacilityName.toLowerCase() === "old cedar campground" ? console.log(c) : null)
-
 
 const SimpleForm: React.FC<SimpleFormProps> = ({ onSubmit }) => {
   const [inputValue, setInputValue] = useState("");
