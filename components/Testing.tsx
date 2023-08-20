@@ -2,16 +2,21 @@ import React, { useEffect, useState } from "react";
 import { parseString } from "xml2js";
 import axios from "axios";
 
+interface Campground {
+  $: {
+    faciltyPhoto: string;
+  };
+}
+
 const Testing: React.FC = () => {
   const [apiData, setApiData] = useState<string>('');
-  const [convertedApiData, setConvertedApiData] = useState<Array<any>>([]);
+  const [convertedApiData, setConvertedApiData] = useState<Campground[]>([]);
 
-  async function fetchApiData(): Promise<String> {
+  async function fetchApiData(): Promise<string> {
     try {
       const response = await axios.get(
         "https://api.amp.active.com/camping/campgrounds?pstate=CO&api_key=scg63dkm2pf5smp8umfke2gj"
       );
-      // console.log(response.data);
       return response.data;
     } catch (error) {
       throw error;
@@ -23,8 +28,6 @@ const Testing: React.FC = () => {
       try {
         const data = await fetchApiData();
         setApiData(data);
-        // console.log(data);
-        // console.log(apiData) doesn't give a response
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -32,16 +35,15 @@ const Testing: React.FC = () => {
     fetchDataApi();
   }, []);
 
-  async function convertXmlToJson(xml: string): Promise<any> {
+  async function convertXmlToJson(xml: string): Promise<void> {
     return new Promise((resolve, reject) => {
       parseString(xml, (err, result) => {
         if (err) {
           reject(err);
         } else {
-          // console.log('http://www.reserveamerica.com' + result.resultset.result[0].$.faciltyPhoto); // grabs a specific value from a campground
-          // console.log(result);
-          setConvertedApiData(result.resultset.result);
-          resolve(result);
+          const campgroundData: Campground[] = result.resultset.result;
+          setConvertedApiData(campgroundData);
+          resolve();
         }
       });
     });
@@ -51,8 +53,7 @@ const Testing: React.FC = () => {
     async function fetchData() {
       try {
         if (apiData) {
-          const result = await convertXmlToJson(apiData);
-          // console.log(convertedApiData);
+          await convertXmlToJson(apiData);
         }
       } catch (error) {
         console.error("Error:", error);
@@ -60,7 +61,7 @@ const Testing: React.FC = () => {
     }
 
     fetchData();
-  }, [apiData]); // Only call this effect when apiData changes
+  }, [apiData]);
 
   return (
     <div className="App">
