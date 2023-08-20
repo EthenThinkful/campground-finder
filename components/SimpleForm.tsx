@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import campgroundInfo from "../app/assets/campgroundInfo.json";
+const BASEURL = `https://www.reserveamerica.com/camping`;
 
 type SimpleFormProps = {
   onSubmit: (inputValue: string) => void;
@@ -11,8 +12,10 @@ interface Campground {
   // Add other properties if applicable
 }
 
+// Retrieve campground names from campgroundInfo.json
 let names: string[] = (campgroundInfo as Campground[]).map((c) => c.FacilityName);
-// console.log(names);
+(campgroundInfo as Campground[]).map((c) => c.FacilityName.toLowerCase() === "old cedar campground" ? console.log(c) : null)
+
 
 const SimpleForm: React.FC<SimpleFormProps> = ({ onSubmit }) => {
   const [inputValue, setInputValue] = useState("");
